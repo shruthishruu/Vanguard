@@ -33,20 +33,23 @@ The game will span approximately 3 minutes and will have multiple phases, includ
 
 **Player:** 
 
-- **Initial Health:** 100 HP 
-- **Lives:** 3 lives 
+- **Initial Health:** 10 HP/Stars 
 - **Movement:** The player can move in all 8 directions (up, down, left, right, and diagonals). 
 - **Player Death:** 
-- When the player's health reaches 0, they lose 1 life.
+- When the player's health reaches 0, they lose life.
 - The player can respawn, blinking twice or thrice to indicate revival.
-- Upon losing all 3 lives, the game ends. 
+- Upon losing all the health of the player, the game ends. 
 - **Attacks:** 
 - **Weapon:** Single bullet type for all attacks. 
 - **Hit Points:** Regular enemies (A & B) and bosses have different scoring for hits: 
 - Regular enemies: 10 points per hit. 
 - First Boss: 50 points per hit. 
 - Final Boss: 80 points per hit. 
-- **Game Over Condition:** Player loses all 3 lives. 
+- **Game Over Condition:** Player loses all health.
+- **Player hit** : The player looses one point/star from different enemies like the following.
+    - Regular enemies : should hit 5 bullets
+    - Mid boss : should hit 2 bullets
+    - Final boss : should hit 1 bullet
 
 **Enemies & Bosses**
 
