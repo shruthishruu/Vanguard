@@ -1,0 +1,24 @@
+// Scorecard Class
+class Scorecard
+{
+    int Score;
+    int PlayerHealth;
+    TimeSpan TimeRemaining;
+
+    void Update(GameTime gameTime)
+    {
+        // Update time remaining
+    }
+
+    void AddScore(int points)
+    {
+        Score += points;
+    }
+
+    void Reset()
+    {
+        Score = 0;
+        PlayerHealth = 10;
+        TimeRemaining = TotalGameTime;
+    }
+}
