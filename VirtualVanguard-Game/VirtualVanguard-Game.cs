@@ -2,14 +2,14 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace virtualvangard_game;
+namespace VirtualVanguard_Game;
 
-public class VirtualVanguard : Game
+public class VirtualVanguardGame : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
 
-    public VirtualVanguard()
+    public VirtualVanguardGame()
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";

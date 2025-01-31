@@ -1,2 +1,2 @@
-﻿using var game = new virtualvangard_game.VirtualVanguard();
+﻿using var game = new VirtualVanguard_Game.VirtualVanguardGame();
 game.Run();
