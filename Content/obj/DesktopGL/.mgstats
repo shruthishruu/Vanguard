@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"/Users/shampurnadas/Game/Content/bossTexture.png","/Users/shampurnadas/Game/Content/bin/DesktopGL/Content/bossTexture.xnb","TextureProcessor","Texture2DContent",6003,40085,0.002088
+"/Users/shampurnadas/Game/Content/enemyTexture.png","/Users/shampurnadas/Game/Content/bin/DesktopGL/Content/enemyTexture.xnb","TextureProcessor","Texture2DContent",29477,118085,0.003758
+"/Users/shampurnadas/Game/Content/playerTexture.png","/Users/shampurnadas/Game/Content/bin/DesktopGL/Content/playerTexture.xnb","TextureProcessor","Texture2DContent",9494,92245,0.298322
