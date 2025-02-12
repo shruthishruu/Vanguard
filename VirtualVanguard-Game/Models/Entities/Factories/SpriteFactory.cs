@@ -1,6 +1,8 @@
-namespace Models.Factories
+using System;
+
+namespace Models
 {
-    public abstract class SpriteFactory
+    abstract public class SpriteFactory
     {
         public abstract void CreateSprite(string type, int x, int y, int width, int height, string imagePath);
     }
