@@ -1,6 +1,6 @@
 namespace Models
 {
-    public class System
+    abstract public class Control
     {
         
     }

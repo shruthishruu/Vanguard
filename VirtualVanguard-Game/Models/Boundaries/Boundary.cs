@@ -1,6 +1,6 @@
 namespace Models
 {
-    public class Component
+    abstract public class Boundary
     {
         public void Update()
         {

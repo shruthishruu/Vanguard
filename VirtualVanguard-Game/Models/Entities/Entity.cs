@@ -3,9 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace Models
 {
-    public class Sprite
+    abstract public class Entity
     {
-        public Sprite(int x, int y, int width, int height, string imagePath)
+        public Entity(int x, int y, int width, int height, string imagePath)
         {
         }
         public List<System> Systems { get; set; }
