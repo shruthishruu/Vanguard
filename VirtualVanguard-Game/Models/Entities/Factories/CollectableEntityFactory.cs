@@ -2,17 +2,17 @@ using System;
 
 namespace Models
 {
-    public class CollectableSpriteFactory : SpriteFactory
+    public class CollectableEntityFactory : EntityFactory
     {
-        public override void CreateSprite(string type, int x, int y, int width, int height, string imagePath)
+        public override void CreateEntity(string type, int x, int y, int width, int height, string imagePath)
         {
             if (type == "Powerup")
             {
-                new PowerupSprite(x, y, width, height, imagePath);
+                new PowerupEntity(x, y, width, height, imagePath);
             }
             else if (type == "Bomb")
             {
-                new BombSprite(x, y, width, height, imagePath);
+                new BombEntity(x, y, width, height, imagePath);
             }
             else
             {

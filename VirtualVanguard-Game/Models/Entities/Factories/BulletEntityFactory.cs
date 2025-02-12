@@ -8,15 +8,15 @@ namespace Models
         {
             if (type == "EnemyBullet")
             {
-                new EnemyBulletSprite(x, y, width, height, imagePath);
+                new EnemyBulletEntity(x, y, width, height, imagePath);
             }
             else if (type == "PlayerBullet")
             {
-                new PlayerBulletSprite(x, y, width, height, imagePath);
+                new PlayerBulletEntity(x, y, width, height, imagePath);
             }
             else if (type == "BossBullet")
             {
-                new BossBulletSprite(x, y, width, height, imagePath);
+                new BossBulletEntity(x, y, width, height, imagePath);
             }
             else
             {

@@ -2,21 +2,21 @@ using System;
 
 namespace Models
 {
-    public class CharacterSpriteFactory : SpriteFactory
+    public class CharacterEntityFactory : EntityFactory
     {
-        public override void CreateSprite(string type, int x, int y, int width, int height, string imagePath)
+        public override void CreateEntity(string type, int x, int y, int width, int height, string imagePath)
         {
             if (type == "Player")
             {
-                new PlayerSprite(x, y, width, height, imagePath);
+                new PlayerEntity(x, y, width, height, imagePath);
             }
             else if (type == "Enemy")
             {
-                new EnemySprite(x, y, width, height, imagePath);
+                new EnemyEntity(x, y, width, height, imagePath);
             }
             else if (type == "Boss")
             {
-                new BossSprite(x, y, width, height, imagePath);
+                new BossEntity(x, y, width, height, imagePath);
             }
             else
             {
