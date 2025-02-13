@@ -2,6 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using VirtualVanguard_Game.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
 
 
 namespace VirtualVanguard_Game;
@@ -22,7 +25,8 @@ public class VirtualVanguardGame : Game
     }
     public ReadOnlyCollection<Entity> Entities
     {
-        get { return _entities.AsReadOnly(); } # ReadOnlyCollection prevents external systems from adding or deletions in the list
+        // ReadOnlyCollection prevents external systems from adding or deletions in the list
+        get { return _entities.AsReadOnly(); }
     }
 
     protected override void Initialize()
