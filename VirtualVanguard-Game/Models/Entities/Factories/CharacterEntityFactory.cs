@@ -1,22 +1,22 @@
 using System;
 
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
     public class CharacterEntityFactory : EntityFactory
     {
-        public override void CreateEntity(string type, int x, int y, int width, int height, string imagePath)
+        public override Entity CreateEntity(string type, int x, int y, int width, int height, string imagePath)
         {
             if (type == "Player")
             {
-                new PlayerEntity(x, y, width, height, imagePath);
+                return new PlayerEntity(x, y, width, height, imagePath);
             }
             else if (type == "Enemy")
             {
-                new EnemyEntity(x, y, width, height, imagePath);
+                return new EnemyEntity(x, y, width, height, imagePath);
             }
             else if (type == "Boss")
             {
-                new BossEntity(x, y, width, height, imagePath);
+                return new BossEntity(x, y, width, height, imagePath);
             }
             else
             {

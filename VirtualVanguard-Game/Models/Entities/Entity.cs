@@ -1,14 +1,28 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
-    abstract public class Entity
+    public abstract class Entity
     {
+        public List<Control> Controls { get; set; }
+        public List<Boundary> Boundaries { get; set; }
+        public int X { get; private set; }
+        public int Y { get; private set; }
+        public int Width { get; }
+        public int Height { get; }
+        public string ImagePath { get; }
+
         public Entity(int x, int y, int width, int height, string imagePath)
         {
+            X = x;
+            Y = y;
+            Width = width;
+            Height = height;
+            ImagePath = imagePath;
+            
+            // Initialize lists to prevent NullReferenceException
+            Controls = new List<Control>();
+            Boundaries = new List<Boundary>();
         }
-        public List<System> Systems { get; set; }
-        public List<Component> Components { get; set; }
     }
 }

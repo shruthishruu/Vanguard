@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
     public class BombEntity : Entity
     {
