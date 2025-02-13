@@ -11,10 +11,12 @@ namespace VirtualVanguard_Game.Models
             Console.WriteLine("Updating EventManager without time.");
         }
 
-        public void Update(Microsoft.Xna.Framework.GameTime time)
+        public void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            Console.WriteLine($"Current game time: {time}");
+            // Printing the total game time in seconds
+            Console.WriteLine($"Total game time: {gameTime.TotalGameTime.TotalSeconds} seconds");
         }
+
     }
 
 }
