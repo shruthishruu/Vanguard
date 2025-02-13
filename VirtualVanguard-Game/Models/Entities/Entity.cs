@@ -21,7 +21,6 @@ namespace VirtualVanguard_Game.Models
             ImagePath = imagePath;
             
             // Initialize lists to prevent NullReferenceException
-            Controls = new List<Control>();
             Boundaries = new List<Boundary>();
         }
     }

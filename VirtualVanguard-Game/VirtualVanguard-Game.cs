@@ -11,6 +11,8 @@ public class VirtualVanguardGame : Game
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
     private EventManager _eventManager; 
+    private List<Entity> _entities;
+    private List<Control> _controls;
 
     public VirtualVanguardGame()
     {
@@ -18,11 +20,16 @@ public class VirtualVanguardGame : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
+    public ReadOnlyCollection<Entity> Entities
+    {
+        get { return _entities.AsReadOnly(); } # ReadOnlyCollection prevents external systems from adding or deletions in the list
+    }
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
         _eventManager = new EventManager();
+        _entities = new List<Entity>();
+        _controls = new List<Control>();
 
         base.Initialize();
     }
