@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
-    public class EnemySprite : Sprite
+    public class EnemyEntity : Entity
     {
-        public EnemySprite(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
+        public EnemyEntity(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
         {
         }
     }

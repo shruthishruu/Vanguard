@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using VirtualVanguard_Game.Models;
+
 
 namespace VirtualVanguard_Game;
 
@@ -8,6 +10,7 @@ public class VirtualVanguardGame : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
+    private EventManager _eventManager; 
 
     public VirtualVanguardGame()
     {
@@ -19,6 +22,7 @@ public class VirtualVanguardGame : Game
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
+        _eventManager = new EventManager();
 
         base.Initialize();
     }
@@ -35,7 +39,7 @@ public class VirtualVanguardGame : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        // TODO: Add your update logic here
+        _eventManager.Update(gameTime);
 
         base.Update(gameTime);
     }

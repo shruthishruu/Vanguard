@@ -1,7 +1,9 @@
-namespace Models
+using System;
+
+namespace VirtualVanguard_Game.Models
 {
-    abstract public class Control
+    public abstract class Control
     {
-        
+        public abstract void Update();
     }
 }

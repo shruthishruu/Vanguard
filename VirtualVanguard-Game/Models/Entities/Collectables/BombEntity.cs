@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
-    public class BombSprite : Sprite
+    public class BombEntity : Entity
     {
-        public BombSprite(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
+        public BombEntity(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
         {
         }
     }

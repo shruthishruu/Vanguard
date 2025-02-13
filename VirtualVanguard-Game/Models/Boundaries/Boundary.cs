@@ -1,10 +1,7 @@
-namespace Models
+namespace VirtualVanguard_Game.Models
 {
     abstract public class Boundary
     {
-        public void Update()
-        {
-            // Update function
-        }
+        
     }
 }
