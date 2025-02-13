@@ -15,7 +15,6 @@ public class VirtualVanguardGame : Game
     private SpriteBatch _spriteBatch;
     private EventManager _eventManager; 
     private List<Entity> _entities;
-    private List<Control> _controls;
 
     public VirtualVanguardGame()
     {
@@ -33,7 +32,6 @@ public class VirtualVanguardGame : Game
     {
         _eventManager = new EventManager();
         _entities = new List<Entity>();
-        _controls = new List<Control>();
 
         base.Initialize();
     }
