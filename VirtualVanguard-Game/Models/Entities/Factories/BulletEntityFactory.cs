@@ -2,9 +2,9 @@ using System;
 
 namespace Models
 {
-    public class BulletSpriteFactory : SpriteFactory
+    public class BulletEntityFactory : EntityFactory
     {
-        public override void CreateSprite(string type, int x, int y, int width, int height, string imagePath)
+        public override void CreateEntity(string type, int x, int y, int width, int height, string imagePath)
         {
             if (type == "EnemyBullet")
             {

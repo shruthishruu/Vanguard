@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Models
 {
-    public class PowerupSprite : Sprite
+    public class PowerupEntity : Entity
     {
-        public PowerupSprite(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
+        public PowerupEntity(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
         {
         }
     }
