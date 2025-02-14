@@ -31,8 +31,7 @@ public class VirtualVanguardGame : Game
 
     protected override void Initialize()
     {
-        _eventManager = new EventManager();
-        _movementControl = new MovementControl();
+        _eventManager = new EventManager(Content);
         _entities = new List<Entity>();
 
         base.Initialize();
