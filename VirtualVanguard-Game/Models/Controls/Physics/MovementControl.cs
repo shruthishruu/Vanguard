@@ -95,25 +95,11 @@ namespace VirtualVanguard_Game.Models
 
                     entity.Position = new Vector2(posX, posY);
                 }
-                
-
-                // if bullet
-                // {
-                //     Position += Velocity * deltaTime;  // Move the bullet
-
-                //     // Remove bullet if it exceeds its lifetime
-                //     timeElapsed += deltaTime;
-                //     if (timeElapsed >= Lifetime)
-                //     {
-                //         MarkForRemoval = true;
-                //     }
-
-                //     // Boundary check (for 800x600 screen)
-                //     if (Position.X < -10 || Position.X > 810 || Position.Y < -10 || Position.Y > 610)
-                //     {
-                //         MarkForRemoval = true;
-                //     }
-                // }
+                else if (entity is Bullet bullet)
+                {
+                    // Update bullet position based on velocity
+                    bullet.Position += bullet.Velocity;
+                }
             }
         }
     }

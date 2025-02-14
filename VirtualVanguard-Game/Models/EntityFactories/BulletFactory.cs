@@ -42,7 +42,7 @@ namespace VirtualVanguard_Game.Models
             var patternConfig = GetPatternConfiguration(patternType);
 
             // Create the attack pattern with pre-defined values
-            AttackPattern pattern = new AttackPattern(bulletType, patternConfig.SpawnRate, patternConfig.Speed, patternConfig.Direction, GetPatternFunction(patternType));
+            AttackPattern pattern = new AttackPattern(bulletType, patternConfig.SpawnRate, patternConfig.Speed, GetPatternFunction(patternType));
             List<Bullet> bullets = pattern.Execute(spawnPosition, bulletTextures[bulletType]);
             foreach (var bullet in bullets)
             {
@@ -50,14 +50,14 @@ namespace VirtualVanguard_Game.Models
             }
         }
 
-        private (float SpawnRate, float Speed, float Direction) GetPatternConfiguration(string patternType)
+        private (float SpawnRate, float Speed) GetPatternConfiguration(string patternType)
         {
             return patternType.ToLower() switch
             {
-                "spiral" => (SpawnRate: 0.1f, Speed: 3.0f, Direction: 0f), // Spiral pattern configuration
-                "wave" => (SpawnRate: 0.2f, Speed: 2.5f, Direction: 90f), // Wave pattern configuration
-                "straight" => (SpawnRate: 0.3f, Speed: 4.0f, Direction: 180f), // Straight pattern configuration
-                _ => (SpawnRate: 0.3f, Speed: 4.0f, Direction: 180f), // Default to straight shot
+                "spiral" => (SpawnRate: 0.1f, Speed: 3.0f), // Spiral pattern configuration
+                "wave" => (SpawnRate: 0.2f, Speed: 2.5f), // Wave pattern configuration
+                "straight" => (SpawnRate: 0.3f, Speed: 4.0f), // Straight pattern configuration
+                _ => (SpawnRate: 0.3f, Speed: 4.0f), // Default to straight shot
             };
         }
 
@@ -77,18 +77,16 @@ namespace VirtualVanguard_Game.Models
             public string BulletType { get; }
             public float SpawnRate { get; }
             public float Speed { get; }
-            public float Direction { get; }
         
             private readonly Func<AttackPattern, Vector2, Texture2D, List<Bullet>> patternFunction;
             private float timeSinceLastShot = 0f;
 
-            public AttackPattern(string bulletType, float spawnRate, float speed, float direction, 
+            public AttackPattern(string bulletType, float spawnRate, float speed, 
                                  Func<AttackPattern, Vector2, Texture2D, List<Bullet>> patternFunction)
             {
                 BulletType = bulletType;
                 SpawnRate = spawnRate;
                 Speed = speed;
-                Direction = direction;
                 this.patternFunction = patternFunction;
             }
 
@@ -112,10 +110,9 @@ namespace VirtualVanguard_Game.Models
             public static List<Bullet> StraightShot(AttackPattern pattern, Vector2 spawnPosition, Texture2D bulletTexture)
             {
                 List<Bullet> bullets = new List<Bullet>();
-                float angleRad = MathHelper.ToRadians(pattern.Direction);
-                Vector2 velocity = new Vector2((float)Math.Cos(angleRad), (float)Math.Sin(angleRad)) * pattern.Speed;
+                Vector2 velocity = new Vector2(0, -1) * pattern.Speed; // Move straight up
 
-                bullets.Add(new Bullet(spawnPosition, 5, 5, (int)pattern.Direction, bulletTexture, velocity));
+                bullets.Add(new Bullet(spawnPosition, 5, 5, 0, bulletTexture, velocity));
                 return bullets;
             }
 
@@ -126,7 +123,7 @@ namespace VirtualVanguard_Game.Models
 
                 for (int i = 0; i < numBullets; i++)
                 {
-                    float angle = (pattern.Direction + (i * 36)) % 360;
+                    float angle = (i * 36) % 360; // 36 degrees between each bullet
                     float angleRad = MathHelper.ToRadians(angle);
                     Vector2 velocity = new Vector2((float)Math.Cos(angleRad), (float)Math.Sin(angleRad)) * pattern.Speed;
 
@@ -142,12 +139,12 @@ namespace VirtualVanguard_Game.Models
 
                 float frequency = 5f;
                 float amplitude = 2f;
-                float angleRad = MathHelper.ToRadians(pattern.Direction);
-                float yOffset = amplitude * (float)Math.Sin(pattern.Direction * frequency);
+                float angleRad = MathHelper.ToRadians(0); // Wave direction (0 degrees for simplicity)
+                float yOffset = amplitude * (float)Math.Sin(0 * frequency); // Wave effect
 
                 Vector2 velocity = new Vector2((float)Math.Cos(angleRad), (float)Math.Sin(angleRad) + yOffset) * pattern.Speed;
 
-                bullets.Add(new Bullet(spawnPosition, 5, 5, (int)pattern.Direction, bulletTexture, velocity));
+                bullets.Add(new Bullet(spawnPosition, 5, 5, 0, bulletTexture, velocity));
 
                 return bullets;
             }

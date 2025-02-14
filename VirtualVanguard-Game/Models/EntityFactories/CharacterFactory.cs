@@ -26,7 +26,7 @@ namespace VirtualVanguard_Game.Models
             else if (type == "Enemy")
             {
                 image = Content.Load<Texture2D>("Enemy");
-                AddEntity(new Enemy(position, width, height, orientation, image, "wave"));
+                AddEntity(new Enemy(position, width, height, orientation, image, "spiral"));
             }
             else if (type == "Boss")
             {
