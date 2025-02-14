@@ -11,7 +11,7 @@ namespace VirtualVanguard_Game.Models
             // Implement attack logic here
             foreach (var enemy in Entities)
             {
-                // Draw to screen
+                
             }
         }
     }

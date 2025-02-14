@@ -4,7 +4,7 @@ namespace VirtualVanguard_Game.Models
 {
     public class BombEntity : Entity
     {
-        public BombEntity(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
+        public BombEntity(Vector2 position, int width, int height, Texture2D image) : base(position, width, height, image)
         {
         }
     }
