@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,18 +13,11 @@ namespace VirtualVanguard_Game.Models
         private bool phase3Started = false;
         private bool phase4Started = false;
 
-        private EntityFactory characterFactory;
-        private ContentManager content;
+        private CharacterFactory characterFactory;
 
-        // Textures for entities
-        private Texture2D playerTexture;
-        private Texture2D enemyTexture;
-        private Texture2D bossTexture;
-
-        public EventManager(ContentManager content)
+        public EventManager(CharacterFactory characterFactory)
         {
-            this.content = content;
-            characterFactory = new CharacterFactory(content);
+            this.characterFactory = characterFactory;
         }
 
         public void Update(GameTime gameTime)
@@ -39,6 +33,11 @@ namespace VirtualVanguard_Game.Models
             Console.WriteLine("Phase 1: Regular Grunts");
             
             // Spawn 3 grunts
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 position = new Vector2(i * 100 + 500, 0); // Example positions
+                characterFactory.CreateEntity("Enemy", position, 50, 50, 0);
+            }
         }
 
         private void StartPhase2()

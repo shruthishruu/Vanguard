@@ -1,17 +1,23 @@
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 
 namespace VirtualVanguard_Game.Models
 {
     public abstract class EntityFactory
     {
+        protected List<Entity> Entities; // Active entities
         protected ContentManager Content;
-        public EntityFactory(ContentManager content)
+        protected EntityManager entityManager;
+        public EntityFactory(ContentManager content, EntityManager entityManager)
         {
             Content = content;
         }
-        public abstract Entity CreateEntity(string type, Vector2 position, int width, int height, int orientation, Texture2D image);
+        public abstract void CreateEntity(string type, Vector2 position, int width, int height, int orientation);
+        public void AddEntity(Entity entity)
+        {
+            entityManager.AddEntity(entity);
+        }
     }
 }

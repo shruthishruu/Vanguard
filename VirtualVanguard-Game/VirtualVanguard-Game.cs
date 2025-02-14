@@ -16,7 +16,10 @@ public class VirtualVanguardGame : Game
     private EventManager _eventManager;
     private MovementControl _movementControl;
     private AttackControl _attackControl;
-    private List<Entity> _entities;
+    private CharacterFactory _characterFactory;
+    private CollectableFactory _collectableFactory;
+    private BulletFactory _bulletFactory;
+    private EntityManager _entityManager;
 
     public VirtualVanguardGame()
     {
@@ -24,18 +27,16 @@ public class VirtualVanguardGame : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
-    public ReadOnlyCollection<Entity> Entities
-    {
-        // ReadOnlyCollection prevents external systems from adding or deletions in the list
-        get { return _entities.AsReadOnly(); }
-    }
 
     protected override void Initialize()
     {
-        _eventManager = new EventManager(Content);
-        _entities = new List<Entity>();
-        _movementControl = new MovementControl();
-        _attackControl = new AttackControl(Content);
+        _eventManager = new EventManager(_characterFactory);
+        _entityManager = new EntityManager();
+        _characterFactory = new CharacterFactory(Content, _entityManager);
+        _collectableFactory = new CollectableFactory(Content, _entityManager);
+        _bulletFactory = new BulletFactory(Content, _entityManager);
+        _movementControl = new MovementControl(_entityManager);
+        _attackControl = new AttackControl(_entityManager);
 
         base.Initialize();
     }
@@ -45,9 +46,7 @@ public class VirtualVanguardGame : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        // test spawn entities
-        _entities.Add(new Player(new Vector2(100, 100), 50, 50, 0, Content.Load<Texture2D>("testplayer")));
-        _entities.Add(new Enemy(new Vector2(100, 100), 50, 50, 0, Content.Load<Texture2D>("testplayer"), System.TimeSpan.Zero));
+        _characterFactory.CreateEntity("Player", new Vector2(100, 100), 50, 50, 0);
     }
 
     protected override void Update(GameTime gameTime)
@@ -58,8 +57,8 @@ public class VirtualVanguardGame : Game
         _eventManager.Update(gameTime);
 
         // Handle the movement of each entity
-        _movementControl.Update(_entities);
-        _attackControl.Update(_entities, gameTime);
+        _movementControl.Update();
+        _attackControl.Update(gameTime);
 
 
         base.Update(gameTime);
@@ -71,7 +70,7 @@ public class VirtualVanguardGame : Game
 
         _spriteBatch.Begin();
 
-        foreach (var entity in _entities) // ✅ Correct syntax
+        foreach (var entity in _entityManager.GetAllEntities())
         {
             var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
             _spriteBatch.Draw(entity.Image, rect, Color.White);

@@ -9,15 +9,17 @@ namespace VirtualVanguard_Game.Models
     public class MovementControl
     {
         private Random rnd;
+        private EntityManager entityManager;
 
-        public MovementControl()
+        public MovementControl(EntityManager entityManager)
         {
             rnd = new Random();
+            this.entityManager = entityManager;
         }
-        public void Update(List<Entity> entities)
+        public void Update()
         {
             // Implement movement logic here
-            foreach (var entity in entities)
+            foreach (var entity in entityManager.GetAllEntities())
             {
                 // Should be used to calculate the max x and y positions for each entity based off size.
                 // Note: Not working correctly now, needs some tinkering.

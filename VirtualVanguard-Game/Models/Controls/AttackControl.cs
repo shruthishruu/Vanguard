@@ -8,14 +8,14 @@ namespace VirtualVanguard_Game.Models
 {
     public class AttackControl
     {
-        private ContentManager Content;
-        public AttackControl(ContentManager content)
+        private EntityManager entityManager;
+        public AttackControl(EntityManager entityManager)
         {
-            Content = content;
+            this.entityManager = entityManager;
         }
-        public void Update(List<Entity> Characters, GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            foreach (var character in Characters)
+            foreach (var character in entityManager.GetAllEntities())
             {
                 if (character is Player player)
                 {

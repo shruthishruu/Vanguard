@@ -7,30 +7,30 @@ namespace VirtualVanguard_Game.Models
 {
     public class CharacterFactory : EntityFactory
     {
-        private ContentManager Content;
-        public CharacterFactory(ContentManager content) : base(content)
+        public CharacterFactory(ContentManager content, EntityManager entityManager) : base(content, entityManager)
         {
             Content = content;
         }
-        public override Entity CreateEntity(string type, Vector2 position, int width, int height, int orientation, Texture2D image)
+        public override void CreateEntity(string type, Vector2 position, int width, int height, int orientation)
         {
+            Texture2D image;
             if (type == "Player")
             {
-                
+                image = Content.Load<Texture2D>("Player");
             }
             else if (type == "Enemy")
             {
-                
+                image = Content.Load<Texture2D>("Enemy");
             }
             else if (type == "Boss")
             {
-
+                image = Content.Load<Texture2D>("Boss");
             }
             else
             {
                 throw new ArgumentException("Invalid entity type");
             }
-            return new Character(position, width, height, orientation, image);
+            AddEntity(new Character(position, width, height, orientation, image));
         }
     }
 }
