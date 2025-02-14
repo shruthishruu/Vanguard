@@ -6,17 +6,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace VirtualVanguard_Game.Models
 {
-    public class MovementControl : Control
+    public class MovementControl
     {
         private Random rnd;
 
         public MovementControl()
         {
             rnd = new Random();
-        }
-
-        public override void Update() {
-
         }
         public void Update(List<Entity> entities)
         {
@@ -28,7 +24,7 @@ namespace VirtualVanguard_Game.Models
                 int maxX = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width - entity.Width;
                 int maxY = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height - entity.Height;
 
-                if (entity is PlayerEntity player)
+                if (entity is Player player)
                 {
                     bool upPressed = Keyboard.GetState().IsKeyDown(Keys.Up);
                     bool downPressed = Keyboard.GetState().IsKeyDown(Keys.Down);
@@ -39,7 +35,7 @@ namespace VirtualVanguard_Game.Models
                     float posX = entity.Position.X;
                     float posY = entity.Position.Y;
 
-                    float moveDistance = player.Slow ? (float)0.5 : 1;
+                    float moveDistance = player.SlowMode ? (float)0.5 : 1;
 
                     // Handle player movement (use keyboard input)
                     if (upPressed && posY > 0) {
@@ -59,12 +55,12 @@ namespace VirtualVanguard_Game.Models
                     }
                     if (ctrlPressed)
                     {
-                        player.Slow = !player.Slow;
+                        player.SlowMode = !player.SlowMode;
                     }
                     
                     entity.Position = new Vector2(posX, posY);
                 }
-                else if (entity is EnemyEntity enemy)
+                else if (entity is Enemy enemy)
                 {
                     // Handle enemy movement (move randomly)
                     float posX = entity.Position.X;
@@ -96,14 +92,6 @@ namespace VirtualVanguard_Game.Models
                     }
 
                     entity.Position = new Vector2(posX, posY);
-                }
-                else if (entity is PlayerBulletEntity bullet)
-                {
-                    // Handle bullet movement (move in straight line)
-                }
-                else if (entity is PowerupEntity powerup)
-                {
-                    // Handle powerup movement
                 }
             }
         }

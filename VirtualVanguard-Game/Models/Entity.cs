@@ -6,27 +6,19 @@ namespace VirtualVanguard_Game.Models
 {
     public abstract class Entity
     {
-        public List<Control> Controls { get; set; }
-        public List<Boundary> Boundaries { get; set; }
         public Vector2 Position { get; set; }
         public int Width { get; }
         public int Height { get; }
         public Texture2D Image { get; }
+        public int Orientation { get; set; }
 
-        public Entity(Vector2 position, int width, int height, Texture2D image)
+        public Entity(Vector2 position, int width, int height, int orientation, Texture2D image)
         {
             Position = position;
             Width = width;
             Height = height;
             Image = image;
-            
-            // Initialize lists to prevent NullReferenceException
-            Boundaries = new List<Boundary>();
-        }
-
-        public void Move(float x, float y)
-        {
-            Position = new Vector2(x, y);
+            Orientation = orientation;
         }
     }
 }

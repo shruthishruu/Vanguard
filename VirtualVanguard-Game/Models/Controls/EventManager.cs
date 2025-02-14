@@ -5,14 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
-    public class EventManager : Control
+    public class EventManager
     {
         private bool phase1Started = false;
         private bool phase2Started = false;
         private bool phase3Started = false;
         private bool phase4Started = false;
 
-        private EntityFactory entityFactory;
+        private EntityFactory characterFactory;
         private ContentManager content;
 
         // Textures for entities
@@ -23,46 +23,12 @@ namespace VirtualVanguard_Game.Models
         public EventManager(ContentManager content)
         {
             this.content = content;
-            entityFactory = new CharacterEntityFactory();
-
-            // Load textures during initialization
-            playerTexture = content.Load<Texture2D>("testplayer");
-            enemyTexture = content.Load<Texture2D>("testplayer");
-            bossTexture = content.Load<Texture2D>("testplayer");
-        }
-
-        public override void Update()
-        {
-            Console.WriteLine("Updating EventManager without time.");
+            characterFactory = new CharacterFactory(content);
         }
 
         public void Update(GameTime gameTime)
         {
             double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
-
-            Console.WriteLine($"Total game time: {totalSeconds} seconds");
-
-            // Spawn entities based on time
-            if (totalSeconds >= 2 && totalSeconds < 2.1)
-            {
-                Console.WriteLine("Spawning Player...");
-                Vector2 playerPosition = new Vector2(100, 200);
-                entityFactory.CreateEntity("Player", playerPosition, 50, 50, playerTexture);
-            }
-
-            if (totalSeconds >= 5 && totalSeconds < 5.1)
-            {
-                Console.WriteLine("Spawning Enemy...");
-                Vector2 enemyPosition = new Vector2(0, 0);
-                entityFactory.CreateEntity("Enemy", enemyPosition, 50, 50, enemyTexture);
-            }
-
-            if (totalSeconds >= 30 && totalSeconds < 30.1)
-            {
-                Console.WriteLine("Spawning Boss...");
-                Vector2 bossPosition = new Vector2(400, 100);
-                entityFactory.CreateEntity("Boss", bossPosition, 100, 100, bossTexture);
-            }
 
             // Handle phase transitions
             HandlePhaseTransitions(totalSeconds);
@@ -71,7 +37,8 @@ namespace VirtualVanguard_Game.Models
         private void StartPhase1()
         {
             Console.WriteLine("Phase 1: Regular Grunts");
-            // Add logic for Phase 1
+            
+            // Spawn 3 grunts
         }
 
         private void StartPhase2()
