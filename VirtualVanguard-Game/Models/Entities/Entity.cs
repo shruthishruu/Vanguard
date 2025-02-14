@@ -8,7 +8,7 @@ namespace VirtualVanguard_Game.Models
     {
         public List<Control> Controls { get; set; }
         public List<Boundary> Boundaries { get; set; }
-        public Vector2 Position { get; private set; }
+        public Vector2 Position { get; set; }
         public int Width { get; }
         public int Height { get; }
         public Texture2D Image { get; }
@@ -22,6 +22,11 @@ namespace VirtualVanguard_Game.Models
             
             // Initialize lists to prevent NullReferenceException
             Boundaries = new List<Boundary>();
+        }
+
+        public void Move(float x, float y)
+        {
+            Position = new Vector2(x, y);
         }
     }
 }
