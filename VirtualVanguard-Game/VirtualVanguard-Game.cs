@@ -61,7 +61,7 @@ public class VirtualVanguardGame : Game
 
         _spriteBatch.Begin();
 
-        for each (var entity in _entities)
+        foreach (var entity in _entities) // ✅ Correct syntax
         {
             _spriteBatch.Draw(entity.Image, entity.Position, Color.White);
         }
@@ -70,4 +70,5 @@ public class VirtualVanguardGame : Game
 
         base.Draw(gameTime);
     }
+
 }

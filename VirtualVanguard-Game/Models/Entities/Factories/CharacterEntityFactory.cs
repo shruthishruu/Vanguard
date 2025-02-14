@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
@@ -8,15 +10,15 @@ namespace VirtualVanguard_Game.Models
         {
             if (type == "Player")
             {
-                return new PlayerEntity(x, y, width, height, image);
+                return new PlayerEntity(position, width, height, image);
             }
             else if (type == "Enemy")
             {
-                return new EnemyEntity(x, y, width, height, image);
+                return new EnemyEntity(position, width, height, image);
             }
             else if (type == "Boss")
             {
-                return new BossEntity(x, y, width, height, image);
+                return new BossEntity(position, width, height, image);
             }
             else
             {

@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
@@ -8,15 +10,15 @@ namespace VirtualVanguard_Game.Models
         {
             if (type == "EnemyBullet")
             {
-                return new EnemyBulletEntity(x, y, width, height, image);
+                return new EnemyBulletEntity(position, width, height, image);
             }
             else if (type == "PlayerBullet")
             {
-                return new PlayerBulletEntity(x, y, width, height, image);
+                return new PlayerBulletEntity(position, width, height, image);
             }
             else if (type == "BossBullet")
             {
-                return new BossBulletEntity(x, y, width, height, image);
+                return new BossBulletEntity(position, width, height, image);
             }
             else
             {

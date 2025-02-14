@@ -18,15 +18,15 @@ namespace VirtualVanguard_Game.Models
         {
             
             // Printing the total game time in seconds
-            Console.WriteLine($"Total game time: {gameTime.TotalGameTime.TotalSeconds} seconds");
+            // Console.WriteLine($"Total game time: {gameTime.TotalGameTime.TotalSeconds} seconds");
 
-            // this is where you add events
-            // example of spawning enemy
-            if (gameTime.TotalGameTime.TotalSeconds == 5)
-            {
-                Console.WriteLine("Spawning enemy");
-                characterFactory.CreateEntity("Enemy", 0, 0, 50, 50, "enemy.png");
-            }   
+            // // this is where you add events
+            // // example of spawning enemy
+            // if (gameTime.TotalGameTime.TotalSeconds == 5)
+            // {
+            //     Console.WriteLine("Spawning enemy");
+            //     characterFactory.CreateEntity("Enemy", 0, 0, 50, 50, "enemy.png");
+            // }   
         }
 
     }

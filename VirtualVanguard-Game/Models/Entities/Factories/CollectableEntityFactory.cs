@@ -1,4 +1,6 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
@@ -8,11 +10,11 @@ namespace VirtualVanguard_Game.Models
         {
             if (type == "Powerup")
             {
-                return new PowerupEntity(x, y, width, height, image);
+                return new PowerupEntity(position, width, height, image);
             }
             else if (type == "Bomb")
             {
-                return new BombEntity(x, y, width, height, image);
+                return new BombEntity(position, width, height, image);
             }
             else
             {
