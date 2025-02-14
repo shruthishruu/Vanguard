@@ -4,6 +4,10 @@ namespace VirtualVanguard_Game.Models
 {
     public class EventManager : Control
     {
+        private bool phase1Started = false;
+        private bool phase2Started = false;
+        private bool phase3Started = false;
+        private bool phase4Started = false;
         CharacterEntityFactory characterFactory
         public EventManager() { 
             characterFactory = new CharacterEntityFactory();
@@ -36,6 +40,47 @@ namespace VirtualVanguard_Game.Models
             {
                 Console.WriteLine("Spawning Boss...");
                 entityFactory.CreateEntity("Boss", 400, 100, 100, 100, "boss.png");
+            }
+             HandlePhaseTransitions(totalSeconds);
+
+        }
+        private void HandlePhaseTransitions(double elapsedTime)
+        {
+            if (elapsedTime >= 3 && elapsedTime < 33)
+            {
+                if (!phase1Started)
+                {
+                    Console.WriteLine("Starting Phase 1: Regular Grunts");
+                    phase1Started = true;
+                    StartPhase1();
+                }
+            }
+            else if (elapsedTime >= 36 && elapsedTime < 86)
+            {
+                if (!phase2Started)
+                {
+                    Console.WriteLine("Starting Phase 2: First Boss Fight");
+                    phase2Started = true;
+                    StartPhase2();
+                }
+            }
+            else if (elapsedTime >= 89 && elapsedTime < 120)
+            {
+                if (!phase3Started)
+                {
+                    Console.WriteLine("Starting Phase 3: Additional Grunts");
+                    phase3Started = true;
+                    StartPhase3();
+                }
+            }
+            else if (elapsedTime >= 123 && elapsedTime < 173)
+            {
+                if (!phase4Started)
+                {
+                    Console.WriteLine("Starting Phase 4: Final Boss Fight");
+                    phase4Started = true;
+                    StartPhase4();
+                }
             }
         }
 
