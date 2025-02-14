@@ -20,6 +20,7 @@ public class VirtualVanguardGame : Game
     private CollectableFactory _collectableFactory;
     private BulletFactory _bulletFactory;
     private EntityManager _entityManager;
+    private BackgroundManager _backgroundManager;
 
     public VirtualVanguardGame()
     {
@@ -37,7 +38,8 @@ public class VirtualVanguardGame : Game
         
         _movementControl = new MovementControl(_entityManager);
         _attackControl = new AttackControl(_bulletFactory, _entityManager);
-        _eventManager = new EventManager(_characterFactory);
+        _backgroundManager = new BackgroundManager(Content);
+        _eventManager = new EventManager(_characterFactory, _entityManager, _backgroundManager);
 
         base.Initialize();
     }
@@ -71,10 +73,16 @@ public class VirtualVanguardGame : Game
 
         _spriteBatch.Begin();
 
+        // Render Background
+        var window = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode;
+        Texture2D current_background = _backgroundManager.GetCurrentBackground();
+        var backgroundRect = new Rectangle(0, 0, window.Width, window.Height);
+        _spriteBatch.Draw(current_background, backgroundRect, Color.White);
+
         foreach (var entity in _entityManager.GetAllEntities())
         {
-            var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
-            _spriteBatch.Draw(entity.Image, rect, Color.White);
+            var entityRect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
+            _spriteBatch.Draw(entity.Image, entityRect, Color.White);
         }
 
         _spriteBatch.End();

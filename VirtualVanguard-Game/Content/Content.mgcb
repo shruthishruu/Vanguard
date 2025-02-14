@@ -35,7 +35,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Background-2.png
+/build:Background-2.png;Background2.png
 
 #begin Background-3.png
 /importer:TextureImporter
@@ -47,7 +47,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Background-3.png
+/build:Background-3.png;Background3.png
 
 #begin Background.png
 /importer:TextureImporter
@@ -59,7 +59,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Background.png
+/build:Background.png;Background1.png
 
 #begin BossEnemy_2.png
 /importer:TextureImporter
