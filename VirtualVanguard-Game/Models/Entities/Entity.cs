@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
@@ -6,19 +8,17 @@ namespace VirtualVanguard_Game.Models
     {
         public List<Control> Controls { get; set; }
         public List<Boundary> Boundaries { get; set; }
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public Vector2 Position { get; private set; }
         public int Width { get; }
         public int Height { get; }
-        public string ImagePath { get; }
+        public Texture2D Image { get; }
 
-        public Entity(int x, int y, int width, int height, string imagePath)
+        public Entity(Vector2 position, int width, int height, Texture2D image)
         {
-            X = x;
-            Y = y;
+            Position = position;
             Width = width;
             Height = height;
-            ImagePath = imagePath;
+            Image = image;
             
             // Initialize lists to prevent NullReferenceException
             Boundaries = new List<Boundary>();

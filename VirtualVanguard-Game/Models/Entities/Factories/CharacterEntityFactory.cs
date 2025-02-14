@@ -1,22 +1,24 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
     public class CharacterEntityFactory : EntityFactory
     {
-        public override Entity CreateEntity(string type, int x, int y, int width, int height, string imagePath)
+        public override Entity CreateEntity(string type, Vector2 position, int width, int height, Texture2D image)
         {
             if (type == "Player")
             {
-                return new PlayerEntity(x, y, width, height, imagePath);
+                return new PlayerEntity(position, width, height, image);
             }
             else if (type == "Enemy")
             {
-                return new EnemyEntity(x, y, width, height, imagePath);
+                return new EnemyEntity(position, width, height, image);
             }
             else if (type == "Boss")
             {
-                return new BossEntity(x, y, width, height, imagePath);
+                return new BossEntity(position, width, height, image);
             }
             else
             {

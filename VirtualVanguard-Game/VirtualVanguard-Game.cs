@@ -41,6 +41,8 @@ public class VirtualVanguardGame : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
+        // test spawn entities
+        _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
     }
 
     protected override void Update(GameTime gameTime)
@@ -57,8 +59,16 @@ public class VirtualVanguardGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+
+        foreach (var entity in _entities) // ✅ Correct syntax
+        {
+            _spriteBatch.Draw(entity.Image, entity.Position, Color.White);
+        }
+
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
+
 }
