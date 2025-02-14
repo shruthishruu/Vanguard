@@ -4,15 +4,9 @@ namespace VirtualVanguard_Game.Models
 {
     public class EventManager : Control
     {
-<<<<<<< Updated upstream
         CharacterEntityFactory characterFactory
         public EventManager() { 
             characterFactory = new CharacterEntityFactory();
-=======
-        CharacterEntityFactory CharacterEntityFactory;
-        public EventManager() { 
-            CharacterEntityFactory = new CharacterEntityFactory();
->>>>>>> Stashed changes
         }
 
         public override void Update()
@@ -22,18 +16,6 @@ namespace VirtualVanguard_Game.Models
 
         public void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-<<<<<<< Updated upstream
-            
-            // Printing the total game time in seconds
-            Console.WriteLine($"Total game time: {gameTime.TotalGameTime.TotalSeconds} seconds");
-
-            // this is where you add events
-            // example of spawning enemy
-            if (gameTime.TotalGameTime.TotalSeconds == 5):
-                Console.WriteLine("Spawning enemy");
-                characterFactory.CreateEntity("Enemy", 0, 0, 50, 50, "enemy.png");
-                
-=======
              double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
 
              Console.WriteLine($"Total game time: {totalSeconds} seconds");
@@ -55,7 +37,6 @@ namespace VirtualVanguard_Game.Models
                 Console.WriteLine("Spawning Boss...");
                 entityFactory.CreateEntity("Boss", 400, 100, 100, 100, "boss.png");
             }
->>>>>>> Stashed changes
         }
 
     }
