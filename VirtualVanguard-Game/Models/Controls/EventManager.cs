@@ -23,41 +23,12 @@ namespace VirtualVanguard_Game.Models
         public EventManager(ContentManager content)
         {
             this.content = content;
-            characterFactory = new CharacterFactory();
-
-            // Load textures during initialization
-            playerTexture = content.Load<Texture2D>("testplayer");
-            enemyTexture = content.Load<Texture2D>("testplayer");
-            bossTexture = content.Load<Texture2D>("testplayer");
+            characterFactory = new CharacterFactory(content);
         }
 
         public void Update(GameTime gameTime)
         {
             double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
-
-            // Console.WriteLine($"Total game time: {totalSeconds} seconds");
-
-            // Spawn entities based on time
-            if (totalSeconds >= 2 && totalSeconds < 2.1)
-            {
-                Console.WriteLine("Spawning Player...");
-                Vector2 playerPosition = new Vector2(100, 200);
-                characterFactory.CreateEntity("Player", playerPosition, 50, 50, 0, playerTexture);
-            }
-
-            if (totalSeconds >= 5 && totalSeconds < 5.1)
-            {
-                Console.WriteLine("Spawning Enemy...");
-                Vector2 enemyPosition = new Vector2(0, 0);
-                characterFactory.CreateEntity("Enemy", enemyPosition, 50, 50, 0, enemyTexture);
-            }
-
-            if (totalSeconds >= 30 && totalSeconds < 30.1)
-            {
-                Console.WriteLine("Spawning Boss...");
-                Vector2 bossPosition = new Vector2(400, 100);
-                characterFactory.CreateEntity("Boss", bossPosition, 100, 100, 0, bossTexture);
-            }
 
             // Handle phase transitions
             HandlePhaseTransitions(totalSeconds);
@@ -66,7 +37,8 @@ namespace VirtualVanguard_Game.Models
         private void StartPhase1()
         {
             Console.WriteLine("Phase 1: Regular Grunts");
-            // Add logic for Phase 1
+            
+            // Spawn 3 grunts
         }
 
         private void StartPhase2()
