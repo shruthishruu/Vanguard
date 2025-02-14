@@ -4,7 +4,7 @@ namespace VirtualVanguard_Game.Models
 {
     public class EventManager : Control
     {
-        CharacterEntityFactory characterFactory
+        CharacterEntityFactory characterFactory;
         public EventManager() { 
             characterFactory = new CharacterEntityFactory();
         }
@@ -22,10 +22,11 @@ namespace VirtualVanguard_Game.Models
 
             // this is where you add events
             // example of spawning enemy
-            if (gameTime.TotalGameTime.TotalSeconds == 5):
+            if (gameTime.TotalGameTime.TotalSeconds == 5)
+            {
                 Console.WriteLine("Spawning enemy");
                 characterFactory.CreateEntity("Enemy", 0, 0, 50, 50, "enemy.png");
-                
+            }   
         }
 
     }

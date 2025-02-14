@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace VirtualVanguard_Game.Models
 {
-    public class AttackControl : Control
+    public class RenderControl : Control
     {
         public override void Update() {}
-        public void Update(List<Entity> Characters)
+        public void Update(List<Entity> Entities)
         {
             // Implement attack logic here
-            foreach (var character in Characters)
+            foreach (var enemy in Entities)
             {
-                // Use factory to spawn bullets
+                // Draw to screen
             }
         }
     }
