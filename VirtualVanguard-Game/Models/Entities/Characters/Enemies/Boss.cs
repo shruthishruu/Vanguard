@@ -7,7 +7,7 @@ namespace VirtualVanguard_Game.Models
 {
     public class Boss : Enemy
     {
-        public Boss(Vector2 position, int width, int height, int orientation, Texture2D image, string attackPattern)
+        public Boss(Vector2 position, int width, int height, int orientation, Texture2D image, AttackPattern attackPattern)
             : base(position, width, height, orientation, image, attackPattern)
         {
             

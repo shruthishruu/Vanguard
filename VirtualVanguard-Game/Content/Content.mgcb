@@ -71,7 +71,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:BossEnemy_2.png
+/build:BossEnemy_2.png;Boss2.png
 
 #begin bossEnemy.png
 /importer:TextureImporter

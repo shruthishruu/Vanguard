@@ -44,8 +44,12 @@ namespace VirtualVanguard_Game.Models
         {
             if (attacker is Enemy enemy)
             {
-                string patternType = enemy.AttackPattern;
-                bulletFactory.CreateAttack("EnemyBullet", enemy.Position, patternType);
+                List<Bullet> bullets = enemy.AttackPattern.Execute(enemy.Position);
+                foreach (Bullet bullet in bullets)
+                {
+                    // spawn bullet
+                    entityManager.AddEntity(bullet);
+                }
             }
         }
     }
