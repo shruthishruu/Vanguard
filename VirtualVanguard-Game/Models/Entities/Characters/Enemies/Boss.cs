@@ -4,9 +4,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
-    public class BossBulletEntity : Entity
+    public class Boss : Enemy
     {
-        public BossBulletEntity(Vector2 position, int width, int height, Texture2D image) : base(position, width, height, image)
+        public Boss(Vector2 position, int width, int height, int orientation, Texture2D image) : base(position, width, height, orientation, image)
         {
         }
     }

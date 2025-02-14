@@ -33,6 +33,7 @@ public class VirtualVanguardGame : Game
     {
         _eventManager = new EventManager(Content);
         _entities = new List<Entity>();
+        _movementControl = new MovementControl();
 
         base.Initialize();
     }
@@ -43,8 +44,8 @@ public class VirtualVanguardGame : Game
 
         // TODO: use this.Content to load your game content here
         // test spawn entities
-        _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
-        _entities.Add(new EnemyEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
+        // _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
+        // _entities.Add(new EnemyEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
     }
 
     protected override void Update(GameTime gameTime)
@@ -56,6 +57,7 @@ public class VirtualVanguardGame : Game
 
         // Handle the movement of each entity
         _movementControl.Update(_entities);
+
 
         base.Update(gameTime);
     }

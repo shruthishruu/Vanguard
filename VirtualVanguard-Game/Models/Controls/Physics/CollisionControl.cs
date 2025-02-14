@@ -4,9 +4,8 @@ using Microsoft.Xna.Framework;
 
 namespace VirtualVanguard_Game.Models
 {
-    public class CollisionControl : Control
+    public class CollisionControl
     {
-        public override void Update() {}
         public void Update(List<Entity> entities)
         {
             // Implement collision detection logic here
