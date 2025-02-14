@@ -8,14 +8,17 @@ namespace VirtualVanguard_Game.Models
 {
     public class AttackControl
     {
+        private BulletFactory bulletFactory;
         private EntityManager entityManager;
-        public AttackControl(EntityManager entityManager)
+        public AttackControl(BulletFactory bulletFactory, EntityManager entityManager)
         {
+            this.bulletFactory = bulletFactory;
             this.entityManager = entityManager;
         }
         public void Update(GameTime gameTime)
         {
-            foreach (var character in entityManager.GetAllEntities())
+            List<Entity> entities = new List<Entity>(entityManager.GetAllEntities());
+            foreach (var character in entities)
             {
                 if (character is Player player)
                 {
@@ -31,9 +34,18 @@ namespace VirtualVanguard_Game.Models
                     if (gameTime.TotalGameTime - enemy.AttackTimer >= TimeSpan.FromSeconds(1))
                     {
                         Console.WriteLine("Enemy attacks!");
+                        HandleAttack(enemy);
                         enemy.AttackTimer = gameTime.TotalGameTime;
                     }
                 }
+            }
+        }
+        private void HandleAttack(Entity attacker)
+        {
+            if (attacker is Enemy enemy)
+            {
+                string patternType = enemy.AttackPattern;
+                bulletFactory.CreateAttack("EnemyBullet", enemy.Position, patternType);
             }
         }
     }

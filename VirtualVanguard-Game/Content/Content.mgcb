@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin ../../../../Downloads/Images/Enemy-3.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:../../../../Downloads/Images/Enemy-3.jpg;PlayerBullet.jpg
+
 #begin Background-2.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -119,7 +131,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Trees.png
+/build:Trees.png;BossBullet.png
 
 #begin uwu.jpg
 /importer:TextureImporter
@@ -131,5 +143,5 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:uwu.jpg
+/build:uwu.jpg;EnemyBullet.jpg
 

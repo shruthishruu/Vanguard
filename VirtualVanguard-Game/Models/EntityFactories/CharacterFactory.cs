@@ -1,15 +1,20 @@
 using System;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using VirtualVanguard_Game.Models;
 
 namespace VirtualVanguard_Game.Models
 {
     public class CharacterFactory : EntityFactory
     {
-        public CharacterFactory(ContentManager content, EntityManager entityManager) : base(content, entityManager)
+
+        public CharacterFactory(ContentManager content, EntityManager entityManager) 
+            : base(content, entityManager)
         {
         }
+
         public override void CreateEntity(string type, Vector2 position, int width, int height, int orientation)
         {
             Texture2D image;
@@ -21,12 +26,11 @@ namespace VirtualVanguard_Game.Models
             else if (type == "Enemy")
             {
                 image = Content.Load<Texture2D>("Enemy");
-                AddEntity(new Enemy(position, width, height, orientation, image, TimeSpan.FromSeconds(1)));
+                AddEntity(new Enemy(position, width, height, orientation, image, "wave"));
             }
             else if (type == "Boss")
             {
-                image = Content.Load<Texture2D>("Boss");
-                AddEntity(new Boss(position, width, height, orientation, image, TimeSpan.FromSeconds(1)));
+                
             }
             else
             {

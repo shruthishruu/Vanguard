@@ -36,7 +36,7 @@ public class VirtualVanguardGame : Game
         _bulletFactory = new BulletFactory(Content, _entityManager);
         
         _movementControl = new MovementControl(_entityManager);
-        _attackControl = new AttackControl(_entityManager);
+        _attackControl = new AttackControl(_bulletFactory, _entityManager);
         _eventManager = new EventManager(_characterFactory);
 
         base.Initialize();
