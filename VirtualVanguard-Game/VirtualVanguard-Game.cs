@@ -30,13 +30,14 @@ public class VirtualVanguardGame : Game
 
     protected override void Initialize()
     {
-        _eventManager = new EventManager(_characterFactory);
         _entityManager = new EntityManager();
         _characterFactory = new CharacterFactory(Content, _entityManager);
         _collectableFactory = new CollectableFactory(Content, _entityManager);
         _bulletFactory = new BulletFactory(Content, _entityManager);
+        
         _movementControl = new MovementControl(_entityManager);
         _attackControl = new AttackControl(_entityManager);
+        _eventManager = new EventManager(_characterFactory);
 
         base.Initialize();
     }
@@ -72,66 +73,13 @@ public class VirtualVanguardGame : Game
 
         foreach (var entity in _entityManager.GetAllEntities())
         {
-            _graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
+            _spriteBatch.Draw(entity.Image, rect, Color.White);
         }
 
-        public ReadOnlyCollection<Entity> Entities
-        {
-            // ReadOnlyCollection prevents external systems from adding or deleting entities in the list
-            get { return _entities.AsReadOnly(); }
-        }
+        _spriteBatch.End();
 
-        protected override void Initialize()
-        {
-            // Initialize EventManager and MovementControl
-            _eventManager = new EventManager(Content);
-            _movementControl = new MovementControl(); // Initialize MovementControl
-            _entities = new List<Entity>();
-
-            base.Initialize();
-        }
-
-        protected override void LoadContent()
-        {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // Load textures and spawn entities
-            _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
-            _entities.Add(new EnemyEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
-        }
-
-        protected override void Update(GameTime gameTime)
-        {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // Update EventManager
-            _eventManager.Update(gameTime);
-
-            // Update MovementControl
-            _movementControl.Update(_entities);
-
-            base.Update(gameTime);
-        }
-
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            _spriteBatch.Begin();
-
-            // Draw all entities
-            foreach (var entity in _entities)
-            {
-                var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
-                _spriteBatch.Draw(entity.Image, rect, Color.White);
-            }
-
-            _spriteBatch.End();
-
-            base.Draw(gameTime);
-        }
+        base.Draw(gameTime);
     }
+
 }

@@ -13,6 +13,7 @@ namespace VirtualVanguard_Game.Models
         public EntityFactory(ContentManager content, EntityManager entityManager)
         {
             Content = content;
+            this.entityManager = entityManager;
         }
         public abstract void CreateEntity(string type, Vector2 position, int width, int height, int orientation);
         public void AddEntity(Entity entity)

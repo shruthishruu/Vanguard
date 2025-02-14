@@ -12,7 +12,6 @@ namespace VirtualVanguard_Game.Models
     {
         public CollectableFactory(ContentManager content, EntityManager entityManager) : base(content, entityManager)
         {
-            Content = content;
         }
         public override void CreateEntity(string type, Vector2 position, int width, int height, int orientation)
         {
