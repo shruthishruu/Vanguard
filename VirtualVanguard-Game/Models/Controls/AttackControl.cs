@@ -1,16 +1,39 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
+using System.Threading.Tasks.Dataflow;
 
 namespace VirtualVanguard_Game.Models
 {
     public class AttackControl
     {
-        public void Update(List<Entity> Characters)
+        private ContentManager Content;
+        public AttackControl(ContentManager content)
         {
-            // Implement attack logic here
+            Content = content;
+        }
+        public void Update(List<Entity> Characters, GameTime gameTime)
+        {
             foreach (var character in Characters)
             {
-                // Use factory to spawn bullets
+                if (character is Player player)
+                {
+                    // Handle player-specific attack logic
+                }
+                else if (character is Enemy enemy)
+                {
+                    if (enemy.AttackTimer == TimeSpan.Zero)
+                    {
+                        enemy.AttackTimer = gameTime.TotalGameTime;
+                    }
+
+                    if (gameTime.TotalGameTime - enemy.AttackTimer >= TimeSpan.FromSeconds(1))
+                    {
+                        Console.WriteLine("Enemy attacks!");
+                        enemy.AttackTimer = gameTime.TotalGameTime;
+                    }
+                }
             }
         }
     }

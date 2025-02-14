@@ -35,7 +35,7 @@ namespace VirtualVanguard_Game.Models
         {
             double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
 
-            Console.WriteLine($"Total game time: {totalSeconds} seconds");
+            // Console.WriteLine($"Total game time: {totalSeconds} seconds");
 
             // Spawn entities based on time
             if (totalSeconds >= 2 && totalSeconds < 2.1)
