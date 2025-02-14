@@ -63,7 +63,8 @@ public class VirtualVanguardGame : Game
 
         foreach (var entity in _entities) // ✅ Correct syntax
         {
-            _spriteBatch.Draw(entity.Image, entity.Position, Color.White);
+            var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
+            _spriteBatch.Draw(entity.Image, rect, Color.White);
         }
 
         _spriteBatch.End();
