@@ -34,27 +34,34 @@ namespace VirtualVanguard_Game.Models
                     bool downPressed = Keyboard.GetState().IsKeyDown(Keys.Down);
                     bool leftPressed = Keyboard.GetState().IsKeyDown(Keys.Left);
                     bool rightPressed = Keyboard.GetState().IsKeyDown(Keys.Right);
+                    bool ctrlPressed = Keyboard.GetState().IsKeyDown(Keys.LeftControl);
 
                     float posX = entity.Position.X;
                     float posY = entity.Position.Y;
 
+                    float moveDistance = player.Slow ? (float)0.5 : 1;
+
                     // Handle player movement (use keyboard input)
                     if (upPressed && posY > 0) {
-                        posY = posY - 1;
+                        posY = posY - moveDistance;
                     }
                     if (downPressed && posY < maxY)
                     {
-                        posY = posY + 1;
+                        posY = posY + moveDistance;
                     }
                     if (leftPressed && posX > 0)
                     {
-                        posX = posX - 1;
+                        posX = posX - moveDistance;
                     }
                     if (rightPressed && posX < maxX)
                     {
-                        posX = posX + 1;
+                        posX = posX + moveDistance;
                     }
-
+                    if (ctrlPressed)
+                    {
+                        player.Slow = !player.Slow;
+                    }
+                    
                     entity.Position = new Vector2(posX, posY);
                 }
                 else if (entity is EnemyEntity enemy)
