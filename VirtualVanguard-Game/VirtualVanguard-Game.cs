@@ -30,7 +30,7 @@ public class VirtualVanguardGame : Game
 
     protected override void Initialize()
     {
-        _eventManager = new EventManager();
+        _eventManager = new EventManager(Content);
         _entities = new List<Entity>();
 
         base.Initialize();
@@ -41,6 +41,8 @@ public class VirtualVanguardGame : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
+        // test spawn entities
+        _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
     }
 
     protected override void Update(GameTime gameTime)
@@ -57,8 +59,17 @@ public class VirtualVanguardGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        _spriteBatch.Begin();
+
+        foreach (var entity in _entities) // ✅ Correct syntax
+        {
+            var rect = new Rectangle((int)entity.Position.X, (int)entity.Position.Y, entity.Width, entity.Height);
+            _spriteBatch.Draw(entity.Image, rect, Color.White);
+        }
+
+        _spriteBatch.End();
 
         base.Draw(gameTime);
     }
+
 }

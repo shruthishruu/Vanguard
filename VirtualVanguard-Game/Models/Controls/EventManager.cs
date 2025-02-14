@@ -1,4 +1,7 @@
 using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
@@ -8,9 +11,24 @@ namespace VirtualVanguard_Game.Models
         private bool phase2Started = false;
         private bool phase3Started = false;
         private bool phase4Started = false;
-        EntityFactory entityFactory;
-        public EventManager() { 
+
+        private EntityFactory entityFactory;
+        private ContentManager content;
+
+        // Textures for entities
+        private Texture2D playerTexture;
+        private Texture2D enemyTexture;
+        private Texture2D bossTexture;
+
+        public EventManager(ContentManager content)
+        {
+            this.content = content;
             entityFactory = new CharacterEntityFactory();
+
+            // Load textures during initialization
+            playerTexture = content.Load<Texture2D>("testplayer");
+            enemyTexture = content.Load<Texture2D>("testplayer");
+            bossTexture = content.Load<Texture2D>("testplayer");
         }
 
         public override void Update()
@@ -18,85 +36,84 @@ namespace VirtualVanguard_Game.Models
             Console.WriteLine("Updating EventManager without time.");
         }
 
-        public void Update(Microsoft.Xna.Framework.GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-             double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
+            double totalSeconds = gameTime.TotalGameTime.TotalSeconds;
 
-             Console.WriteLine($"Total game time: {totalSeconds} seconds");
+            Console.WriteLine($"Total game time: {totalSeconds} seconds");
 
+            // Spawn entities based on time
             if (totalSeconds >= 2 && totalSeconds < 2.1)
             {
                 Console.WriteLine("Spawning Player...");
-                entityFactory.CreateEntity("Player", 100, 200, 50, 50, "player.png");
+                Vector2 playerPosition = new Vector2(100, 200);
+                entityFactory.CreateEntity("Player", playerPosition, 50, 50, playerTexture);
             }
 
             if (totalSeconds >= 5 && totalSeconds < 5.1)
             {
                 Console.WriteLine("Spawning Enemy...");
-                entityFactory.CreateEntity("Enemy", 0, 0, 50, 50, "enemy.png");
+                Vector2 enemyPosition = new Vector2(0, 0);
+                entityFactory.CreateEntity("Enemy", enemyPosition, 50, 50, enemyTexture);
             }
 
             if (totalSeconds >= 30 && totalSeconds < 30.1)
             {
                 Console.WriteLine("Spawning Boss...");
-                entityFactory.CreateEntity("Boss", 400, 100, 100, 100, "boss.png");
+                Vector2 bossPosition = new Vector2(400, 100);
+                entityFactory.CreateEntity("Boss", bossPosition, 100, 100, bossTexture);
             }
-             HandlePhaseTransitions(totalSeconds);
 
+            // Handle phase transitions
+            HandlePhaseTransitions(totalSeconds);
         }
 
-        private void StartPhase1() {
+        private void StartPhase1()
+        {
+            Console.WriteLine("Phase 1: Regular Grunts");
+            // Add logic for Phase 1
+        }
 
+        private void StartPhase2()
+        {
+            Console.WriteLine("Phase 2: First Boss Fight");
+            // Add logic for Phase 2
         }
-        private void StartPhase2() {
-            
+
+        private void StartPhase3()
+        {
+            Console.WriteLine("Phase 3: Additional Grunts");
+            // Add logic for Phase 3
         }
-        private void StartPhase3() {
-            
+
+        private void StartPhase4()
+        {
+            Console.WriteLine("Phase 4: Final Boss Fight");
+            // Add logic for Phase 4
         }
-        private void StartPhase4() {
-            
-        }
+
         private void HandlePhaseTransitions(double elapsedTime)
         {
-            if (elapsedTime >= 3 && elapsedTime < 33)
+            if (elapsedTime >= 3 && !phase1Started)
             {
-                if (!phase1Started)
-                {
-                    Console.WriteLine("Starting Phase 1: Regular Grunts");
-                    phase1Started = true;
-                    StartPhase1();
-                }
+                phase1Started = true;
+                StartPhase1();
             }
-            else if (elapsedTime >= 36 && elapsedTime < 86)
+            else if (elapsedTime >= 36 && !phase2Started)
             {
-                if (!phase2Started)
-                {
-                    Console.WriteLine("Starting Phase 2: First Boss Fight");
-                    phase2Started = true;
-                    StartPhase2();
-                }
+                phase2Started = true;
+                StartPhase2();
             }
-            else if (elapsedTime >= 89 && elapsedTime < 120)
+            else if (elapsedTime >= 89 && !phase3Started)
             {
-                if (!phase3Started)
-                {
-                    Console.WriteLine("Starting Phase 3: Additional Grunts");
-                    phase3Started = true;
-                    StartPhase3();
-                }
+                phase3Started = true;
+                StartPhase3();
             }
-            else if (elapsedTime >= 123 && elapsedTime < 173)
+            else if (elapsedTime >= 123 && !phase4Started)
             {
-                if (!phase4Started)
-                {
-                    Console.WriteLine("Starting Phase 4: Final Boss Fight");
-                    phase4Started = true;
-                    StartPhase4();
-                }
+                phase4Started = true;
+                StartPhase4();
             }
         }
-
     }
-
 }

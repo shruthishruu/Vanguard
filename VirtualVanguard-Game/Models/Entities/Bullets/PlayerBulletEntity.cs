@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace VirtualVanguard_Game.Models
 {
     public class PlayerBulletEntity : Entity
     {
-        public PlayerBulletEntity(int x, int y, int width, int height, string imagePath) : base(x, y, width, height, imagePath)
+        public PlayerBulletEntity(Vector2 position, int width, int height, Texture2D image) : base(position, width, height, image)
         {
         }
     }
