@@ -8,9 +8,9 @@ namespace VirtualVanguard_Game.Models
         private bool phase2Started = false;
         private bool phase3Started = false;
         private bool phase4Started = false;
-        CharacterEntityFactory characterFactory
+        EntityFactory entityFactory;
         public EventManager() { 
-            characterFactory = new CharacterEntityFactory();
+            entityFactory = new CharacterEntityFactory();
         }
 
         public override void Update()
@@ -43,6 +43,19 @@ namespace VirtualVanguard_Game.Models
             }
              HandlePhaseTransitions(totalSeconds);
 
+        }
+
+        private void StartPhase1() {
+
+        }
+        private void StartPhase2() {
+            
+        }
+        private void StartPhase3() {
+            
+        }
+        private void StartPhase4() {
+            
         }
         private void HandlePhaseTransitions(double elapsedTime)
         {
