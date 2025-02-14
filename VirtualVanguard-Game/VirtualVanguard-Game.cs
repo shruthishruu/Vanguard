@@ -13,7 +13,8 @@ public class VirtualVanguardGame : Game
 {
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    private EventManager _eventManager; 
+    private EventManager _eventManager;
+    private MovementControl _movementControl;
     private List<Entity> _entities;
 
     public VirtualVanguardGame()
@@ -31,6 +32,7 @@ public class VirtualVanguardGame : Game
     protected override void Initialize()
     {
         _eventManager = new EventManager();
+        _movementControl = new MovementControl();
         _entities = new List<Entity>();
 
         base.Initialize();
@@ -43,6 +45,7 @@ public class VirtualVanguardGame : Game
         // TODO: use this.Content to load your game content here
         // test spawn entities
         _entities.Add(new PlayerEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
+        _entities.Add(new EnemyEntity(new Vector2(100, 100), 50, 50, Content.Load<Texture2D>("testplayer")));
     }
 
     protected override void Update(GameTime gameTime)
@@ -51,6 +54,9 @@ public class VirtualVanguardGame : Game
             Exit();
 
         _eventManager.Update(gameTime);
+
+        // Handle the movement of each entity
+        _movementControl.Update(_entities);
 
         base.Update(gameTime);
     }
