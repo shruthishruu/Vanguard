@@ -8,7 +8,6 @@ namespace VirtualVanguard_Game.Models
 {
     public interface IAttackComponent
     {
-        public Vector2 OriginPosition { get; set; }
-        public List<Bullet> Execute();
+        public List<Bullet> Execute(Vector2 position);
     }
 }

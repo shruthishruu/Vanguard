@@ -9,16 +9,15 @@ namespace VirtualVanguard_Game.Models
 {
     public class CharacterFactory : EntityFactory
     {
-        private AttackPatternFactory attackFactory;
         public CharacterFactory(ContentManager content, EntityManager entityManager) 
             : base(content, entityManager)
         {
-            attackFactory = new AttackPatternFactory();
         }
 
         public override void CreateEntity(string type, Vector2 position, int width, int height, int orientation)
         {
             Texture2D image;
+            var attackPattern = new AttackPattern();
             if (type == "Player")
             {
                 image = Content.Load<Texture2D>("Player");
@@ -27,20 +26,23 @@ namespace VirtualVanguard_Game.Models
             else if (type == "Enemy")
             {
                 image = Content.Load<Texture2D>("Enemy");
-                var spreadAttackPattern = attackFactory.CreateSpreadAttack(3.0f, Content.Load<Texture2D>("EnemyBullet"));
-                AddEntity(new Enemy(position, width, height, orientation, image, spreadAttackPattern));
+                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                attackPattern.AddAttack(attack1);
+                AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
             else if (type == "Boss1")
             {
                 image = Content.Load<Texture2D>("Boss");
-                var spreadAttackPattern = attackFactory.CreateSpiralAttack(3.0f, Content.Load<Texture2D>("EnemyBullet"));
-                AddEntity(new Enemy(position, width, height, orientation, image, spreadAttackPattern));
+                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                attackPattern.AddAttack(attack1);
+                AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
             else if (type == "Boss2")
             {
                 image = Content.Load<Texture2D>("Boss2");
-                var spreadAttackPattern = attackFactory.CreateSpiralAttack(1.5f, Content.Load<Texture2D>("EnemyBullet"));
-                AddEntity(new Enemy(position, width, height, orientation, image, spreadAttackPattern));
+                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                attackPattern.AddAttack(attack1);
+                AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
             else
             {
