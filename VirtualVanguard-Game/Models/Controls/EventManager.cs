@@ -49,7 +49,7 @@ namespace VirtualVanguard_Game.Models
             for (int i = 0; i < 3; i++)
             {
                 Vector2 position = new Vector2(i * 100 + 500, 0); // Example positions
-                characterFactory.CreateEntity("Enemy", position, 50, 50, 0);
+                characterFactory.CreateEntity("Enemy", position, 50, 50, 90);
             }
         }
         private void StartPhase2()
