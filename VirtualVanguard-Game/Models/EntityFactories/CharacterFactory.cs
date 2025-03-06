@@ -26,21 +26,21 @@ namespace VirtualVanguard_Game.Models
             else if (type == "Enemy")
             {
                 image = Content.Load<Texture2D>("Enemy");
-                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                Attack attack1 = new StraightAttack(orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
                 attackPattern.AddAttack(attack1);
                 AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
             else if (type == "Boss1")
             {
                 image = Content.Load<Texture2D>("Boss");
-                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                Attack attack1 = new StraightAttack(orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
                 attackPattern.AddAttack(attack1);
                 AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
             else if (type == "Boss2")
             {
                 image = Content.Load<Texture2D>("Boss2");
-                Attack attack1 = new StraightAttack(position, orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                Attack attack1 = new StraightAttack(orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
                 attackPattern.AddAttack(attack1);
                 AddEntity(new Enemy(position, width, height, orientation, image, attackPattern));
             }
