@@ -8,11 +8,9 @@ namespace VirtualVanguard_Game.Models
 {
     public class AttackControl
     {
-        private BulletFactory bulletFactory;
         private EntityManager entityManager;
         public AttackControl(BulletFactory bulletFactory, EntityManager entityManager)
         {
-            this.bulletFactory = bulletFactory;
             this.entityManager = entityManager;
         }
         public void Update(GameTime gameTime)
