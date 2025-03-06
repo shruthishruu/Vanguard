@@ -10,7 +10,7 @@ namespace VirtualVanguard_Game.Models
         private int orientation;
         private Texture2D image;
         private Vector2 velocity;
-        public StraightAttack(Vector2 originPosition, int orientation, Texture2D image, Vector2 velocity)
+        public StraightAttack(int orientation, Texture2D image, Vector2 velocity)
         {
             this.orientation = orientation;
             this.image = image;
