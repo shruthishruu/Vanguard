@@ -8,9 +8,10 @@ namespace VirtualVanguard_Game.Models
     public class SpreadAttack : Attack
     {
         private Texture2D image;
-        private Vector2 velocity;
         private int angle;
         private int numBullets;
+        private Vector2 orientation;
+        private int speed;
 
         /// <summary>
         /// Constructor
@@ -22,20 +23,33 @@ namespace VirtualVanguard_Game.Models
         /// <param name="numBullets"></param>
         public SpreadAttack(int speed, Vector2 orientation, Texture2D image, int angle, int numBullets) : base(speed)
         {
+            this.orientation = orientation;
             this.image = image;
             this.angle = angle;
             this.numBullets = numBullets;
-            velocity = new Vector2(speed * orientation.X, speed * orientation.Y);
+            this.speed = speed;
         }
         public override List<Bullet> Execute(Vector2 position)
         {
             List<Bullet> bullets = new List<Bullet>();
+
+            // Starting angle based on the orientation
+            float startAngle = (float)Math.Atan2(orientation.Y, orientation.X) - MathHelper.ToRadians(angle / 2.0f);
+            float angleIncrement = MathHelper.ToRadians(angle) / (numBullets - 1);
+
             for (int i = 0; i < numBullets; i++)
             {
-                Vector2 newOrientation = new Vector2((float)Math.Cos(MathHelper.ToRadians(angle * i)), (float)Math.Sin(MathHelper.ToRadians(angle * i)));
-                Bullet newBullet = new Bullet(position, 10, 10, newOrientation, image, velocity);
+                // Calculate the orientation for each bullet
+                Vector2 newOrientation = new Vector2(
+                    (float)Math.Cos(startAngle + angleIncrement * i),
+                    (float)Math.Sin(startAngle + angleIncrement * i)
+                );
+                // Adjust velocity according to the new orientation
+                Vector2 newVelocity = new Vector2(speed * newOrientation.X, speed * newOrientation.Y);
+                Bullet newBullet = new Bullet(position, 10, 10, newOrientation, image, newVelocity);
                 bullets.Add(newBullet);
             }
+
             return bullets;
         }
 
