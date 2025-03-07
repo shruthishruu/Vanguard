@@ -40,6 +40,7 @@ namespace VirtualVanguard_Game.Models
             // Remove all enemies
             entityManager.RemoveEnemies();
         }
+        Vector2 enemyOrientation = new Vector2(0, 1);
         private void StartPhase1()
         {
             Console.WriteLine("Phase 1: Regular Grunts");
@@ -49,7 +50,7 @@ namespace VirtualVanguard_Game.Models
             for (int i = 0; i < 3; i++)
             {
                 Vector2 position = new Vector2(i * 100 + 500, 0); // Example positions
-                characterFactory.CreateEntity("Enemy", position, 50, 50, 90);
+                characterFactory.CreateEntity("Enemy", position, 50, 50, enemyOrientation);
             }
         }
         private void StartPhase2()
@@ -59,7 +60,7 @@ namespace VirtualVanguard_Game.Models
 
             // Spawn boss
             Vector2 position = new Vector2(400, 100);
-            characterFactory.CreateEntity("Boss1", position, 100, 100, 0);
+            characterFactory.CreateEntity("Boss1", position, 100, 100, enemyOrientation);
         }
 
         private void StartPhase3()
@@ -71,7 +72,7 @@ namespace VirtualVanguard_Game.Models
             for (int i = 0; i < 5; i++)
             {
                 Vector2 position = new Vector2(i * 100 + 300, 0); // Example positions
-                characterFactory.CreateEntity("Enemy", position, 50, 50, 0);
+                characterFactory.CreateEntity("Enemy", position, 50, 50, enemyOrientation);
             }
         }
 
@@ -81,7 +82,7 @@ namespace VirtualVanguard_Game.Models
 
             // Add logic for Phase 4 (e.g., spawn final boss)
             Vector2 position = new Vector2(400, 100);
-            characterFactory.CreateEntity("Boss2", position, 150, 150, 0);
+            characterFactory.CreateEntity("Boss2", position, 150, 150, enemyOrientation);
         }
 
         private void HandlePhaseTransitions(double elapsedTime)

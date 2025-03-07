@@ -13,7 +13,7 @@ namespace VirtualVanguard_Game.Models
         public CollectableFactory(ContentManager content, EntityManager entityManager) : base(content, entityManager)
         {
         }
-        public override void CreateEntity(string type, Vector2 position, int width, int height, int orientation)
+        public override void CreateEntity(string type, Vector2 position, int width, int height, Vector2 orientation)
         {
             Texture2D image;
             if (type == "Powerup")
