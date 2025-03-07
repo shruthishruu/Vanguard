@@ -7,14 +7,14 @@ namespace VirtualVanguard_Game.Models
 {
     public class StraightAttack : Attack
     {
-        private int orientation;
+        private Vector2 orientation;
         private Texture2D image;
         private Vector2 velocity;
-        public StraightAttack(int orientation, Texture2D image, Vector2 velocity)
+        public StraightAttack(int speed, Vector2 orientation, Texture2D image) : base(speed)
         {
             this.orientation = orientation;
             this.image = image;
-            this.velocity = velocity;
+            velocity = new Vector2(speed * orientation.X, speed * orientation.Y);
         }
         public override List<Bullet> Execute(Vector2 position)
         {

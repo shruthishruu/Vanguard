@@ -21,7 +21,9 @@ namespace VirtualVanguard_Game.Models
             if (type == "Player")
             {
                 image = Content.Load<Texture2D>("Player");
-                AddEntity(new Player(position, width, height, orientation, image));
+                Attack attack1 = new StraightAttack(orientation, Content.Load<Texture2D>("EnemyBullet"), new Vector2(0, 1));
+                attackPattern.AddAttack(attack1);
+                AddEntity(new Player(position, width, height, orientation, image, attackPattern));
             }
             else if (type == "Enemy")
             {
