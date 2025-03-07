@@ -4,9 +4,9 @@
         "time": 2,
         "background": "background1",
         "enemies": [
-          { "type": "Enemy", "x": 500, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 600, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 700, "y": 0, "width": 50, "height": 50, "rotation": 0 }
+          { "type": "Enemy", "x": 500, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 600, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 700, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] }
         ]
       },
       {
@@ -14,7 +14,7 @@
         "background": "background2",
         "removeEnemies": true,
         "enemies": [
-          { "type": "Boss1", "x": 400, "y": 100, "width": 100, "height": 100, "rotation": 0 }
+          { "type": "Boss1", "x": 400, "y": 100, "width": 100, "height": 100, "orientation": [0, 1] }
         ]
       },
       {
@@ -22,11 +22,11 @@
         "background": "background3",
         "removeEnemies": true,
         "enemies": [
-          { "type": "Enemy", "x": 300, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 400, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 500, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 600, "y": 0, "width": 50, "height": 50, "rotation": 0 },
-          { "type": "Enemy", "x": 700, "y": 0, "width": 50, "height": 50, "rotation": 0 }
+          { "type": "Enemy", "x": 300, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 400, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 500, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 600, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
+          { "type": "Enemy", "x": 700, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] }
         ]
       },
       {
@@ -34,7 +34,7 @@
         "background": "background3",
         "removeEnemies": true,
         "enemies": [
-          { "type": "Boss2", "x": 400, "y": 100, "width": 150, "height": 150, "rotation": 0 }
+          { "type": "Boss2", "x": 400, "y": 100, "width": 150, "height": 150, "orientation": [0, 1] }
         ]
       }
     ]
