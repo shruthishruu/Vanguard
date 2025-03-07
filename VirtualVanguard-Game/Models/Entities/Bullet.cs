@@ -9,7 +9,7 @@ namespace VirtualVanguard_Game.Models
         public float Lifetime { get; private set; }   // Time in seconds before despawning
         public float timeElapsed = 0f;              // Time since the bullet was created
 
-        public Bullet(Vector2 position, int width, int height, int orientation, Texture2D image, Vector2 velocity, float lifetime = 5f) 
+        public Bullet(Vector2 position, int width, int height, Vector2 orientation, Texture2D image, Vector2 velocity, float lifetime = 5f) 
             : base(position, width, height, orientation, image)
         {
             Velocity = velocity;

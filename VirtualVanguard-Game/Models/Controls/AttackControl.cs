@@ -3,16 +3,15 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using System.Threading.Tasks.Dataflow;
+using Microsoft.Xna.Framework.Input;
 
 namespace VirtualVanguard_Game.Models
 {
     public class AttackControl
     {
-        private BulletFactory bulletFactory;
         private EntityManager entityManager;
         public AttackControl(BulletFactory bulletFactory, EntityManager entityManager)
         {
-            this.bulletFactory = bulletFactory;
             this.entityManager = entityManager;
         }
         public void Update(GameTime gameTime)
@@ -22,7 +21,11 @@ namespace VirtualVanguard_Game.Models
             {
                 if (character is Player player)
                 {
-                    // Handle player-specific attack logic
+                    // Check if button is pressed
+                    if (Keyboard.GetState().IsKeyDown(Keys.Space))
+                    {
+                        HandleAttack(player);
+                    }
                 }
                 else if (character is Enemy enemy)
                 {
@@ -40,16 +43,13 @@ namespace VirtualVanguard_Game.Models
                 }
             }
         }
-        private void HandleAttack(Entity attacker)
+        private void HandleAttack(Character attacker)
         {
-            if (attacker is Enemy enemy)
+            List<Bullet> bullets = attacker.AttackPattern.Execute(attacker.Position);
+            foreach (Bullet bullet in bullets)
             {
-                List<Bullet> bullets = enemy.AttackPattern.Execute(enemy.Position);
-                foreach (Bullet bullet in bullets)
-                {
-                    // spawn bullet
-                    entityManager.AddEntity(bullet);
-                }
+                // spawn bullet
+                entityManager.AddEntity(bullet);
             }
         }
     }

@@ -49,7 +49,7 @@ public class VirtualVanguardGame : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
-        _characterFactory.CreateEntity("Player", new Vector2(100, 100), 50, 50, 0);
+        _characterFactory.CreateEntity("Player", new Vector2(100, 100), 50, 50, new Vector2(0, -1));
     }
 
     protected override void Update(GameTime gameTime)
