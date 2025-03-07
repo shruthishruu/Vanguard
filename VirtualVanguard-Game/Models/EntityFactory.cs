@@ -15,7 +15,7 @@ namespace VirtualVanguard_Game.Models
             Content = content;
             this.entityManager = entityManager;
         }
-        public abstract void CreateEntity(string type, Vector2 position, int width, int height, int orientation);
+        public abstract void CreateEntity(string type, Vector2 position, int width, int height, Vector2 orientation);
         public void AddEntity(Entity entity)
         {
             entityManager.AddEntity(entity);
