@@ -23,7 +23,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:../../../../Downloads/Images/Enemy-3.jpg;PlayerBullet.jpg
+/build:Enemy-3.jpg;PlayerBullet.jpg
 
 #begin Background-2.png
 /importer:TextureImporter
