@@ -22,8 +22,7 @@ namespace VirtualVanguard_Game.Models
             this.characterFactory = characterFactory;
             this.entityManager = entityManager;
             this.backgroundManager = backgroundManager;
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "Controls", "event_script.json");
-
+            String filePath = "Content/event_script.json";
             LoadPhasesFromJson(filePath); // Load phases from JSON
         }
 
@@ -67,7 +66,7 @@ namespace VirtualVanguard_Game.Models
 
             foreach (var enemy in phase.enemies)
             {
-                characterFactory.CreateEntity(enemy.type, new Vector2(enemy.x, enemy.y), enemy.width, enemy.height, enemy.rotation);
+                characterFactory.CreateEntity(enemy.type, new Vector2(enemy.x, enemy.y), enemy.width, enemy.height, new Vector2(enemy.orientation[0], enemy.orientation[1]));
             }
         }
     }
@@ -93,6 +92,6 @@ namespace VirtualVanguard_Game.Models
         public float y { get; set; }       // "y" in JSON
         public int width { get; set; }     // "width" in JSON
         public int height { get; set; }    // "height" in JSON
-        public int rotation { get; set; } // "rotation" in JSON
+        public List<int> orientation { get; set; } // "rotation" in JSON
     }
 }

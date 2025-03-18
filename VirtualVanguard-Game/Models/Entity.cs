@@ -10,9 +10,9 @@ namespace VirtualVanguard_Game.Models
         public int Width { get; }
         public int Height { get; }
         public Texture2D Image { get; }
-        public int Orientation { get; set; }
+        public Vector2 Orientation { get; set; }
 
-        public Entity(Vector2 position, int width, int height, int orientation, Texture2D image)
+        public Entity(Vector2 position, int width, int height, Vector2 orientation, Texture2D image)
         {
             Position = position;
             Width = width;
