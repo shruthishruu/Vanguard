@@ -6,7 +6,7 @@ namespace VirtualVanguard_Game.Models
 {
     public class Collectable : Entity
     {
-        public Collectable(Vector2 position, int width, int height, int orientation, Texture2D image) : base(position, width, height, orientation, image)
+        public Collectable(Vector2 position, int width, int height, Vector2 orientation, Texture2D image) : base(position, width, height, orientation, image)
         {
         }
     }
