@@ -22,8 +22,8 @@ namespace VirtualVanguard_Game.Models
             this.characterFactory = characterFactory;
             this.entityManager = entityManager;
             this.backgroundManager = backgroundManager;
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "Controls", "event_script.json");
-            // string filePath = Path.Combine("../../../../VirtualVanguard-Game", "Models", "Controls", "event_script.json");
+            // string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Models", "Controls", "event_script.json");
+            string filePath = Path.Combine("../../../../VirtualVanguard-Game", "Models", "Controls", "event_script.json");
 
             LoadPhasesFromJson(filePath); // Load phases from JSON
         }
