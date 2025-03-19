@@ -7,7 +7,7 @@ namespace VirtualVanguard_Game.Models
     public class CollisionControl
     {
         // Main update method to check collisions
-        public void Update(List<Entity> entities)
+        public void Update(IReadOnlyList<Entity> entities)
         {
             for (int i = 0; i < entities.Count; i++)
             {
@@ -25,33 +25,29 @@ namespace VirtualVanguard_Game.Models
         private void HandleCollision(Entity entity1, Entity entity2)
         {
             // Check if EnemyBullet collides with Player
-            if (entity1.Type == "EnemyBullet" && entity2.Type == "Player")
+            if (entity1 is EnemyBullet && entity2 is Character)
             {
                 ReducePlayerLife(entity2);
             }
-            else if (entity2.Type == "EnemyBullet" && entity1.Type == "Player")
+            else if (entity2 is EnemyBullet && entity1 is Character)
             {
                 ReducePlayerLife(entity1);
             }
 
             // Check if PlayerBullet collides with Enemy
-            else if (entity1.Type == "PlayerBullet" && entity2.Type == "Enemy")
+            else if (entity1 is PlayerBullet && entity2 is Character)
             {
                 ReduceEnemyLife(entity2);
             }
-            else if (entity2.Type == "PlayerBullet" && entity1.Type == "Enemy")
+            else if (entity2 is PlayerBullet && entity1 is Character)
             {
                 ReduceEnemyLife(entity1);
             }
 
             // Check if Player collides with Enemy
-            else if (entity1.Type == "Player" && entity2.Type == "Enemy")
+            else if (entity1 is Character && entity2 is Character)
             {
                 ReducePlayerLife(entity1);
-            }
-            else if (entity2.Type == "Player" && entity1.Type == "Enemy")
-            {
-                ReducePlayerLife(entity2);
             }
         }
 
