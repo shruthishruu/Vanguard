@@ -16,10 +16,18 @@ namespace VirtualVanguard_Game.Models
             this.image = image;
             velocity = new Vector2(speed * orientation.X, speed * orientation.Y);
         }
-        public override List<Bullet> Execute(Vector2 position)
+        public override List<Bullet> Execute(Vector2 position, bool isPlayerBullet)
         {
-            Bullet newBullet = new Bullet(position, 10, 10, orientation, image, velocity);
-            return new List<Bullet> { newBullet };
+            if (isPlayerBullet)
+            {
+                PlayerBullet newBullet = new PlayerBullet(position, 10, 10, orientation, image, velocity);
+                return new List<Bullet> { newBullet };
+            }
+            else
+            {
+                EnemyBullet newBullet = new EnemyBullet(position, 10, 10, orientation, image, velocity);
+                return new List<Bullet> { newBullet };
+            }
         }
     }
 }

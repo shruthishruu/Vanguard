@@ -25,29 +25,33 @@ namespace VirtualVanguard_Game.Models
         private void HandleCollision(Entity entity1, Entity entity2)
         {
             // Check if EnemyBullet collides with Player
-            if (entity1 is EnemyBullet && entity2 is Character)
+            if (entity1 is EnemyBullet && entity2 is Player)
             {
                 ReducePlayerLife(entity2);
             }
-            else if (entity2 is EnemyBullet && entity1 is Character)
+            else if (entity2 is EnemyBullet && entity1 is Player)
             {
                 ReducePlayerLife(entity1);
             }
 
             // Check if PlayerBullet collides with Enemy
-            else if (entity1 is PlayerBullet && entity2 is Character)
+            else if (entity1 is PlayerBullet && entity2 is Enemy)
             {
                 ReduceEnemyLife(entity2);
             }
-            else if (entity2 is PlayerBullet && entity1 is Character)
+            else if (entity2 is PlayerBullet && entity1 is Enemy)
             {
                 ReduceEnemyLife(entity1);
             }
 
             // Check if Player collides with Enemy
-            else if (entity1 is Character && entity2 is Character)
+            else if (entity1 is Player && entity2 is Enemy)
             {
                 ReducePlayerLife(entity1);
+            }
+            else if (entity2 is Player && entity1 is Enemy)
+            {
+                ReducePlayerLife(entity2);
             }
         }
 

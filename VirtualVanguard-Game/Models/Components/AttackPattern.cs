@@ -17,12 +17,12 @@ namespace VirtualVanguard_Game.Models
         {
             Attacks.Add(attack);
         }
-        public List<Bullet> Execute(Vector2 position)
+        public List<Bullet> Execute(Vector2 position, bool isPlayerBullet)
         {
             List<Bullet> Bullets = new List<Bullet>();
             for (int i = 0; i < Attacks.Count; i++)
             {
-                Bullets.AddRange(Attacks[i].Execute(position));
+                Bullets.AddRange(Attacks[i].Execute(position, isPlayerBullet));
             }
             return Bullets;
         }

@@ -45,11 +45,23 @@ namespace VirtualVanguard_Game.Models
         }
         private void HandleAttack(Character attacker)
         {
-            List<Bullet> bullets = attacker.AttackPattern.Execute(attacker.Position);
-            foreach (Bullet bullet in bullets)
+            if (attacker is Player)
             {
-                // spawn bullet
-                entityManager.AddEntity(bullet);
+                List<Bullet> bullets = attacker.AttackPattern.Execute(attacker.Position, true);
+                foreach (Bullet bullet in bullets)
+                {
+                    PlayerBullet playerBullet = (PlayerBullet) bullet;
+                    entityManager.AddEntity(playerBullet);
+                }
+            }
+            else if (attacker is Enemy)
+            {
+                List<Bullet> bullets = attacker.AttackPattern.Execute(attacker.Position, false);
+                foreach (Bullet bullet in bullets)
+                {
+                    EnemyBullet enemyBullet = (EnemyBullet) bullet;
+                    entityManager.AddEntity(enemyBullet);
+                }
             }
         }
     }
