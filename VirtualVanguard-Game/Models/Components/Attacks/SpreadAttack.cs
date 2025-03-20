@@ -29,7 +29,7 @@ namespace VirtualVanguard_Game.Models
             this.numBullets = numBullets;
             this.speed = speed;
         }
-        public override List<Bullet> Execute(Vector2 position)
+        public override List<Bullet> Execute(Vector2 position, bool isPlayerBullet)
         {
             List<Bullet> bullets = new List<Bullet>();
 
@@ -46,8 +46,16 @@ namespace VirtualVanguard_Game.Models
                 );
                 // Adjust velocity according to the new orientation
                 Vector2 newVelocity = new Vector2(speed * newOrientation.X, speed * newOrientation.Y);
-                Bullet newBullet = new Bullet(position, 10, 10, newOrientation, image, newVelocity);
-                bullets.Add(newBullet);
+                if (isPlayerBullet)
+                {
+                    PlayerBullet newBullet = new PlayerBullet(position, 10, 10, newOrientation, image, newVelocity);
+                    bullets.Add(newBullet);
+                }
+                else
+                {
+                    EnemyBullet newBullet = new EnemyBullet(position, 10, 10, newOrientation, image, newVelocity);
+                    bullets.Add(newBullet);
+                }
             }
 
             return bullets;

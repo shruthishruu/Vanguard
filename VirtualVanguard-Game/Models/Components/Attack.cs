@@ -13,6 +13,6 @@ namespace VirtualVanguard_Game.Models
         {
             this.speed = speed;
         }
-        public abstract List<Bullet> Execute(Vector2 position);
+        public abstract List<Bullet> Execute(Vector2 position, bool isPlayerBullet);
     }
 }
