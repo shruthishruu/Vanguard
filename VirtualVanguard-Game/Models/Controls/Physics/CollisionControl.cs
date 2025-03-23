@@ -73,6 +73,7 @@ namespace VirtualVanguard_Game.Models
                 if (player.GetLife() <= 0)
                 {
                     Console.WriteLine("Player has died!");
+                    GameManager.Instance.CheckLossCondition(player);
                 }
             }
         }

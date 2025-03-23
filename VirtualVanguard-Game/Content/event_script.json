@@ -1,7 +1,7 @@
 {
     "phases": [
       {
-        "time": 2,
+        "time": 0,
         "background": "background1",
         "enemies": [
           { "type": "Enemy", "x": 500, "y": 0, "width": 50, "height": 50, "orientation": [0, 1] },
