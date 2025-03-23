@@ -52,6 +52,8 @@ namespace VirtualVanguard_Game.Models
                 StartPhase(phases[currentPhaseIndex]);
                 currentPhaseIndex++;
             }
+
+            GameManager.Instance.CheckWinCondition(gameTime, entityManager.GetAllEntities());
         }
 
         private void StartPhase(Phase phase)
