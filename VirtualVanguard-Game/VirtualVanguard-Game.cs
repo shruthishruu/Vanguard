@@ -39,9 +39,10 @@ public class VirtualVanguardGame : Game
         
         _movementControl = new MovementControl(_entityManager);
         _attackControl = new AttackControl(_bulletFactory, _entityManager);
-        _collisionControl = new CollisionControl();
         _backgroundManager = new BackgroundManager(Content);
         _eventManager = new EventManager(_characterFactory, _entityManager, _backgroundManager);
+        _eventManager.Subscribe(GameManager.Instance);    
+        _collisionControl = new CollisionControl(_eventManager);  
 
         base.Initialize();
     }

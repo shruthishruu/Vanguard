@@ -6,6 +6,13 @@ namespace VirtualVanguard_Game.Models
 {
     public class CollisionControl
     {
+        private EventManager eventManager;
+
+        public CollisionControl(EventManager eventManager) 
+        {
+            this.eventManager = eventManager;
+        }
+
         // Main update method to check collisions
         public void Update(IReadOnlyList<Entity> entities)
         {
@@ -73,7 +80,7 @@ namespace VirtualVanguard_Game.Models
                 if (player.GetLife() <= 0)
                 {
                     Console.WriteLine("Player has died!");
-                    GameManager.Instance.CheckLossCondition(player);
+                    eventManager.Notify(new GameEvent("PlayerDied"));
                 }
             }
         }
